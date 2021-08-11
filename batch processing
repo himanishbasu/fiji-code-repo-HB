@@ -1,0 +1,20 @@
+///////////////////////// process all open files /////////////////////
+for (i = 0; i < nImages; i++) {
+	selectImage(i+1);
+	////>>>> process file here <<<<
+}
+
+
+
+
+////////////////////// batch process all files in a folder and save it to the same folder as TIFF files/////////////////
+dir = getDirectory("Choose Source Directory ");
+list = getFileList(dir);
+
+for (i=0; i<list.length; i++) {
+   showProgress(i+1, list.length);
+   open(dir+list[i]);
+	 ////>>>> process file here <<<<
+   saveAs("TIFF", dir+list[i]);
+   close();
+}
